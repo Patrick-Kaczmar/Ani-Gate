@@ -10,14 +10,14 @@ function Home() {
 
   return (
     <Grid container direction="column" justify="center" alignContent="center" alignItems="center">
-      <Grid item>
         <Grid item>
-          BANNER
+          <img alt="yuno-banner" src={`${process.env.PUBLIC_URL}/yuno-banner.png`} id="yunoBanner" />
         </Grid>
-        <Grid item className="searchbar">
-          <SearchBar />
+        <Grid container direction="column" justify="center" alignContent="center" alignItems="center">
+          <Grid item className="searchbar">
+            <SearchBar />
+          </Grid>
         </Grid>
-      </Grid>
     </Grid>
   );
 }
