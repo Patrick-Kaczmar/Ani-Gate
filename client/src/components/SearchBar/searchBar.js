@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
-import "./searchBar.scss"
+import IconButton from '@material-ui/core/IconButton';
+import { SearchContext } from "../../utils/SearchContext";
+import "./searchBar.scss";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -32,15 +34,6 @@ const useStyles = makeStyles((theme) => ({
             width: 'auto',
         },
     },
-    searchIcon: {
-        padding: theme.spacing(0, 2),
-        height: '100%',
-        position: 'absolute',
-        pointerEvents: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
     inputRoot: {
         color: 'inherit',
     },
@@ -61,31 +54,46 @@ const useStyles = makeStyles((theme) => ({
 
 function SearchBar() {
 
+    const search = useContext(SearchContext);
+    const [input, setInput] = useState("")
+
+    const handleSearch = (event) => {
+        event.preventDefault();
+        search.search(input).then((data) => {
+            console.log(data)
+            search.setData(data.results)
+        })
+    };
+
     const classes = useStyles();
 
     return (
-        <div className={classes.root}>
-            <AppBar position="static">
-                <Toolbar>
-                    <Typography className={classes.title} variant="h6" noWrap>
-                        Search for anime!
+        <>
+            <div className={classes.root}>
+                <AppBar position="static">
+                    <Toolbar>
+                        <Typography className={classes.title} variant="h6" noWrap>
+                            Search for anime!
                     </Typography>
-                    <div className={classes.search}>
-                        <div className={classes.searchIcon}>
-                            <SearchIcon />
+                        <div className={classes.search}>
+                            <InputBase
+                                placeholder="Search…"
+                                value={input}
+                                classes={{
+                                    root: classes.inputRoot,
+                                    input: classes.inputInput,
+                                }}
+                                inputProps={{ 'aria-label': 'search' }}
+                                onChange={(event) => setInput(event.target.value)}
+                            />
                         </div>
-                        <InputBase
-                            placeholder="Search…"
-                            classes={{
-                                root: classes.inputRoot,
-                                input: classes.inputInput,
-                            }}
-                            inputProps={{ 'aria-label': 'search' }}
-                        />
-                    </div>
-                </Toolbar>
-            </AppBar>
-        </div>
+                        <IconButton type="submit" disabled={!input} onClick={handleSearch}>
+                            <SearchIcon />
+                        </IconButton>
+                    </Toolbar>
+                </AppBar>
+            </div>
+        </>
     )
 };
 
