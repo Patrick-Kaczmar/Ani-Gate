@@ -29,14 +29,20 @@ function App() {
 
   const search = (searchTerm) => {
     return fetch(
-      `https://api.jikan.moe/v3/search/anime?q=${searchTerm}&limit=20`
+      `https://api.jikan.moe/v3/search/anime?q=${searchTerm}&limit=10`
+    ).then((response) => response.json());
+  };
+
+  const genreSearch = (searchTerm) => {
+    return fetch(
+      `https://api.jikan.moe/v3/search/anime?q=&page=1&genre=${searchTerm}&order_by=score&sort=desc`
     ).then((response) => response.json());
   };
 
   return (
     <Router>
       <UserContext.Provider value={{ email, setEmail, loggedIn, setLoggedIn }}>
-        <SearchContext.Provider value={{ animeData, setData, favoriteAnime, setFavorite, search }}>
+        <SearchContext.Provider value={{ animeData, setData, favoriteAnime, setFavorite, search, genreSearch }}>
           <div>
             <Nav />
             <Switch>

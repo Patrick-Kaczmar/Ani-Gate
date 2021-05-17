@@ -5,5 +5,6 @@ export const SearchContext = createContext({
     favoriteAnime: {},
     setData: () => {},
     setFavorite: () => {},
-    search: () => {}
+    search: () => {},
+    genreSearch: () => {}
 });
