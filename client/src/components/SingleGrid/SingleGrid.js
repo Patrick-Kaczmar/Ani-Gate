@@ -18,14 +18,17 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'nowrap',
     // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
     transform: 'translateZ(0)',
+    height: '500px'
   },
   title: {
     color: theme.palette.primary.light,
   },
   titleBar: {
-    background:
-      'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+    background: 'linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%)'
   },
+  singleCard: {
+    height: '480px !important'
+  }
 }));
 
 
@@ -34,10 +37,10 @@ export default function SingleLineGridList(props) {
 
   return (
     <div className={classes.root}>
-      <GridList className={classes.gridList} cols={2.5}>
+      <GridList className={classes.gridList} cols={4}>
         {props.results.map((anime) => (
-          <GridListTile key={anime.mal_id}>
-            <img src={anime.image_url} alt={anime.title} />
+          <GridListTile className={classes.singleCard} key={anime.mal_id}>
+            <img src={anime.image_url} alt={anime.title} style={{height: "100%"}, {width: "100%"}}/>
             <GridListTileBar
               title={anime.title}
               classes={{

@@ -21,7 +21,9 @@ function Home() {
         <Grid item className="searchbar">
           <SearchBar />
         </Grid>
-        <SingleGrid results={search.animeData}/>
+        <Grid item className="singleGrid">
+          <SingleGrid results={search.animeData} />
+        </Grid>
       </Grid>
     </Grid>
   );
