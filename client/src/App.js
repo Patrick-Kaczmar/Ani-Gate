@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import UserContext from "./utils/UserContext";
 import SignUp from "./pages/SignUp";
 import Logout from "./pages/Logout";
+import Favorites from "./pages/Favorites"
 import SessionUser from "./utils/SessionUser";
 import { SearchContext } from "./utils/SearchContext"
 
@@ -48,6 +49,9 @@ function App() {
             <Switch>
               <Route exact path={["/", "/Home"]}>
                 <Home />
+              </Route>
+              <Route exact path="/favorites">
+                <Favorites />
               </Route>
               <Route exact path="/login">
                 <Login />
