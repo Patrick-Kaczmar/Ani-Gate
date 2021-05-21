@@ -18,15 +18,7 @@ function App() {
   SessionUser(setEmail, setLoggedIn);
 
   const [animeData, setAnimeData] = useState([]);
-  const [favoriteAnime, setFavoriteAnime] = useState({});
-
-  const setData = (data) => {
-    setAnimeData(data)
-  };
-
-  const setFavorite = (data) => {
-    setFavoriteAnime(data)
-  };
+  const [favoriteAnime, setFavoriteAnime] = useState([]);
 
   const search = (searchTerm) => {
     return fetch(
@@ -43,7 +35,7 @@ function App() {
   return (
     <Router>
       <UserContext.Provider value={{ email, setEmail, loggedIn, setLoggedIn }}>
-        <SearchContext.Provider value={{ animeData, setData, favoriteAnime, setFavorite, search, genreSearch }}>
+        <SearchContext.Provider value={{ animeData, setAnimeData, favoriteAnime, setFavoriteAnime, search, genreSearch }}>
           <div>
             <Nav />
             <Switch>

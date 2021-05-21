@@ -19,15 +19,15 @@ const useStyles = makeStyles((theme) => ({
 export default function GroupSizesColors() {
     const classes = useStyles();
 
-    const search = useContext(SearchContext);
-    const [num, setNum] = useState("")
+    const { genreSearch, setAnimeData } = useContext(SearchContext);
+    const [num, setNum] = useState("");
 
     useEffect(() => {
-        search.genreSearch(num).then((data) => {
-            console.log(num)
-            console.log(data)
-            search.setData(data.results)
-        });
+        genreSearch(num).then(res => {
+            console.log(res)
+            setAnimeData(res.results)
+        })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [num])
 
     return (

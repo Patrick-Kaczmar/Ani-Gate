@@ -1,9 +1,9 @@
 const router = require("express").Router();
-const bookRoutes = require("./books");
+const animeRoutes = require("./anime");
 const userRoutes = require("./user");
 
-// Book routes /api/books*
-router.use("/books", bookRoutes);
+// Anime routes /api/anime*
+router.use("/anime", animeRoutes);
 // User routes /api/user*
 router.use("/user", userRoutes);
 

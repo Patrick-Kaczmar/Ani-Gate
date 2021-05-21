@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import SearchBar from "../components/SearchBar/searchBar"
 import SingleGrid from "../components/SingleGrid/SingleGrid"
 import { Grid } from "@material-ui/core"
-import { SearchContext } from "../utils/SearchContext";
 import GenreButtons from "../components/GenreButtons/GenreButtons"
 // import API from "../utils/API";
 // import { Link } from "react-router-dom";
@@ -10,8 +9,6 @@ import "./Home.scss"
 
 
 function Home() {
-
-  const search = useContext(SearchContext);
 
   return (
     <Grid container direction="column" justify="center" alignContent="center" alignItems="center">
@@ -25,7 +22,7 @@ function Home() {
           <GenreButtons />
         </Grid>
         <Grid item className="singleGrid">
-          <SingleGrid results={search.animeData} />
+          <SingleGrid />
         </Grid>
       </Grid>
     </Grid>

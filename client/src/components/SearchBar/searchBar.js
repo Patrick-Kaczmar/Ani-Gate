@@ -54,14 +54,14 @@ const useStyles = makeStyles((theme) => ({
 
 function SearchBar() {
 
-    const search = useContext(SearchContext);
+    const { search, setAnimeData } = useContext(SearchContext);
     const [input, setInput] = useState("")
 
     const handleSearch = (event) => {
         event.preventDefault();
-        search.search(input).then((data) => {
+        search(input).then((data) => {
             console.log(data)
-            search.setData(data.results)
+            setAnimeData(data.results)
         })
     };
 

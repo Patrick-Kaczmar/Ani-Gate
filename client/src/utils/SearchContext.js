@@ -2,9 +2,9 @@ import { createContext } from "react";
 
 export const SearchContext = createContext({
     animeData: [],
-    favoriteAnime: {},
-    setData: () => {},
-    setFavorite: () => {},
+    favoriteAnime: [],
+    setAnimeData: () => {},
+    setFavoriteAnime: () => {},
     search: () => {},
     genreSearch: () => {}
 });

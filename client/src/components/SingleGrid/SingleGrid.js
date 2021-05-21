@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import IconButton from '@material-ui/core/IconButton';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
+import API from "../../utils/API"
+import { SearchContext } from "../../utils/SearchContext"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,12 +37,28 @@ const useStyles = makeStyles((theme) => ({
 export default function SingleLineGridList(props) {
   const classes = useStyles();
 
+  const { setFavoriteAnime, animeData } = useContext(SearchContext);
+  const [animeForm, setAnimeForm] = useState({})
+
+  function createAnime(event, data) {
+    event.preventDefault();
+    API.saveAnime({
+      id: data.mal_id,
+      title: data.title,
+      image: data.image_url,
+      synopsis: data.synopsis
+    })
+      .then(res => setAnimeForm({ ...res }))
+      .then(res => setFavoriteAnime(animeForm))
+      .catch(err => console.log(err))
+  }
+
   return (
     <div className={classes.root}>
       <GridList className={classes.gridList} cols={5}>
-        {props.results.map((anime) => (
+        {animeData.map((anime) => (
           <GridListTile className={classes.singleCard} key={anime.mal_id}>
-            <img src={anime.image_url} alt={anime.title} style={{height: "100%", width: "100%"}}/>
+            <img src={anime.image_url} alt={anime.title} style={{ height: "100%", width: "100%" }} />
             <GridListTileBar
               title={anime.title}
               classes={{
@@ -48,7 +66,7 @@ export default function SingleLineGridList(props) {
                 title: classes.title,
               }}
               actionIcon={
-                <IconButton aria-label={`star ${anime.title}`}>
+                <IconButton aria-label={`star ${anime.title}`} onClick={(event) => createAnime(event, anime)}>
                   <StarBorderIcon className={classes.title} />
                 </IconButton>
               }
