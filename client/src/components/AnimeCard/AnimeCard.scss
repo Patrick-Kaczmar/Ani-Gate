@@ -1,0 +1,31 @@
+.aniGrid {
+    padding: 40px;
+    list-style: none;
+
+    :hover{
+        background-color: rgb(175, 175, 175);
+        cursor: pointer;
+    }
+}
+
+.imageTile {
+    height: 383px;
+    width: 350px;
+}
+
+.aniPaper {
+    padding: 20px;
+}
+
+#title {
+    text-align: center;
+}
+
+#cardImage {
+    height: 100%;
+    width: 100%;
+}
+
+#syno {
+    width: 350px;
+}

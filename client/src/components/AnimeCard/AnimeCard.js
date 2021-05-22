@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Paper, Grid } from "@material-ui/core"
+import { Paper, Grid, GridListTile, Typography } from "@material-ui/core"
 import API from "../../utils/API"
+import "./AnimeCard.scss"
 
 export default function Card() {
 
@@ -19,15 +20,20 @@ export default function Card() {
     }, [])
 
     return (
-        <Grid container direction="row" justify="space-evenly" alignItems="baseline">
-             {cardArr.map((card) => (
-                    <Grid key={card.id} item>
-                        <Paper elevation={3}>
-                            <h5>{card.title}</h5>
-                        </Paper>
-                    </Grid>
-                ))}
+        <Grid container direction="row" justify="space-evenly" alignItems="center">
+            {cardArr.map((card) => (
+                <Grid key={card.id} item className="aniGrid">
+                    <Paper elevation={3} className="aniPaper">
+                        <h3 id="title">{card.title}</h3>
+                        <GridListTile className="imageTile">
+                            <img src={card.image} alt="cardImage" id="cardImage" />
+                        </GridListTile>
+                        <Typography variant="h6" paragraph={true} id="syno">
+                            {card.synopsis}
+                        </Typography>
+                    </Paper>
+                </Grid>
+            ))}
         </Grid>
     )
 }
-            
