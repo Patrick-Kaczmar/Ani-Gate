@@ -3,9 +3,8 @@
     list-style: none;
     width: 470px;
 
-    :hover{
-        background-color: rgb(175, 175, 175);
-        cursor: pointer;
+    :hover {
+        background-color: rgb(150, 136, 182);
     }
 }
 
@@ -26,6 +25,9 @@
    bottom: 0;
    right: 35%;
    margin-bottom: 20px !important;
+   :hover {
+        background-color: #ffffff00;
+    }
 }
 
 #title {
