@@ -33,7 +33,7 @@ export default function Card() {
             {cardArr.map((card) => (
                 <Grid key={card.id} item className="aniGrid">
                     <Paper elevation={3} className="aniPaper">
-                        <h3 id="title">{card.title}</h3>
+                        <h3 id="title"><a href={card.url} target="_blank" rel="noopener noreferrer">{card.title}</a></h3>
                         <GridListTile className="imageTile">
                             <img src={card.image} alt="cardImage" id="cardImage" />
                         </GridListTile>

@@ -46,6 +46,7 @@ export default function SingleLineGridList(props) {
       id: data.mal_id,
       title: data.title,
       image: data.image_url,
+      url: data.url,
       synopsis: data.synopsis
     })
       .then(res => setAnimeForm({ ...res }))
@@ -60,7 +61,7 @@ export default function SingleLineGridList(props) {
           <GridListTile className={classes.singleCard} key={anime.mal_id}>
             <img src={anime.image_url} alt={anime.title} style={{ height: "100%", width: "100%" }} />
             <GridListTileBar
-              title={anime.title}
+              title={<a href={anime.url} target="_blank" rel="noopener noreferrer">{anime.title}</a>}
               classes={{
                 root: classes.titleBar,
                 title: classes.title,

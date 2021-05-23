@@ -6,6 +6,7 @@ const animeSchema = new Schema({
   title: { type: String, required: true },
   image: { type: String, required: true },
   synopsis: String,
+  url: String,
   date: { type: Date, default: Date.now }
 });
 
