@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
@@ -40,10 +40,10 @@ function App() {
             <Nav />
             <Switch>
               <Route exact path={["/", "/Home"]}>
-                <Home />
+                {loggedIn ? <Home /> : <Redirect to="/signup" />}
               </Route>
               <Route exact path="/favorites">
-                <Favorites />
+                {loggedIn ? <Favorites /> : <Redirect to="/signup" />}
               </Route>
               <Route exact path="/login">
                 <Login />
