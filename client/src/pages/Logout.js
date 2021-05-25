@@ -15,7 +15,7 @@ function Logout(props){
         });
     }, [setEmail, setLoggedIn])
     return (
-        <div><p>You are now logged out.</p></div>
+        <div style={{textAlign: 'center'}}><p>You are now logged out.</p></div>
     )
 }
 export default Logout;

@@ -1,5 +1,4 @@
 import React, { Fragment, useContext, useRef } from 'react';
-// import "./style.scss";
 import API from '../../utils/API';
 import UserContext from '../../utils/UserContext';
 
@@ -42,12 +41,12 @@ function SignUpForm(props) {
                 if (!loggedIn) {
                     return (<form {...extraProps} onSubmit={handleSubmit}>
                         <div className="form-group">
-                            <label htmlFor={emailId}>Email address</label>
+                            <label htmlFor={emailId} style={{color: 'white'}}>Email address</label>
                             <input ref={emailInput} type="email" className="form-control" id={emailId} aria-describedby={emailHelpId} />
-                            <small id={emailHelpId} className="email-help-text form-text text-muted">We'll never share your email with anyone else.</small>
+                            <small id={emailHelpId} className="email-help-text form-text" style={{color: 'white'}}>We'll never share your email with anyone else.</small>
                         </div>
                         <div className="form-group">
-                            <label htmlFor={passwordId}>Password</label>
+                            <label htmlFor={passwordId} style={{color: 'white'}}>Password</label>
                             <input ref={passwordInput} type="password" className="form-control" id={passwordId} />
                         </div>
                         <button type="submit" className="btn btn-primary">Sign Up</button>

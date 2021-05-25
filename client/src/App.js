@@ -41,9 +41,11 @@ function App() {
             <Switch>
               <Route exact path={["/", "/Home"]}>
                 {loggedIn ? <Home /> : <Redirect to="/signup" />}
+                {/* <Home /> */}
               </Route>
               <Route exact path="/favorites">
                 {loggedIn ? <Favorites /> : <Redirect to="/signup" />}
+                {/* <Favorites /> */}
               </Route>
               <Route exact path="/login">
                 <Login />

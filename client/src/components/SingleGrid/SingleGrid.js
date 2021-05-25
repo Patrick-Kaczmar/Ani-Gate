@@ -5,6 +5,7 @@ import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import IconButton from '@material-ui/core/IconButton';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
+// import {Typography} from '@material-ui/core'
 import API from "../../utils/API"
 import { SearchContext } from "../../utils/SearchContext"
 
@@ -30,6 +31,20 @@ const useStyles = makeStyles((theme) => ({
   },
   singleCard: {
     height: '383px !important'
+  },
+  synopsisTileBar: {
+    height: '90% !important',
+    width: '100% !important',
+    whiteSpace: 'normal',
+    opacity: '0%',
+    '&:hover': {
+      opacity: '100%'
+    }
+  },
+  hiddenText: {
+    fontSize: '20px',
+    whiteSpace: 'normal',
+    lineHeight: '1.5'
   }
 }));
 
@@ -59,7 +74,7 @@ export default function SingleLineGridList(props) {
       <GridList className={classes.gridList} cols={5}>
         {animeData.map((anime) => (
           <GridListTile className={classes.singleCard} key={anime.mal_id}>
-            <img src={anime.image_url} alt={anime.title} style={{ height: "100%", width: "100%" }} />
+            <img src={anime.image_url} alt={anime.title} style={{height: '100%', width: '100%'}}/>
             <GridListTileBar
               title={<a href={anime.url} target="_blank" rel="noopener noreferrer">{anime.title}</a>}
               classes={{
@@ -71,6 +86,14 @@ export default function SingleLineGridList(props) {
                   <StarBorderIcon className={classes.title} />
                 </IconButton>
               }
+            />
+            <GridListTileBar
+            title={anime.synopsis}
+            titlePosition='top'
+            classes={{
+              root: classes.synopsisTileBar,
+              title: classes.hiddenText
+            }}
             />
           </GridListTile>
         ))}
