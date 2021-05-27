@@ -32,7 +32,7 @@ To use the app you need to sign up with an email and password to get access to t
 ### Deployed application link - https://wheres-my-waifu.herokuapp.com/
 
 ## Demonstration
-![example-readme-demo]()
+![example-readme-demo](./client/public/animeProject.png)
 
 ## License
 MIT License - Copyright 2021 Patrick-Kaczmar
