@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const animeSchema = new Schema({
   id: { type: String, required: true },
+  userID: {type: String, required: true},
   title: { type: String, required: true },
   image: { type: String, required: true },
   synopsis: String,
