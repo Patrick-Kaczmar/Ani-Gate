@@ -57,16 +57,20 @@ export default function SingleLineGridList(props) {
 
   function createAnime(event, data) {
     event.preventDefault();
-    API.saveAnime({
-      id: data.mal_id,
-      title: data.title,
-      image: data.image_url,
-      url: data.url,
-      synopsis: data.synopsis
+    API.getUser().then(res => {
+      console.log('this is the user data i need: ' + JSON.stringify(res.data._id))
+      API.saveAnime({
+        id: data.mal_id,
+        userID: res.data._id,
+        title: data.title,
+        image: data.image_url,
+        url: data.url,
+        synopsis: data.synopsis
+      })
+        .then(res => setAnimeForm({ ...res }))
+        .then(setFavoriteAnime(animeForm))
+        .catch(err => console.log(err))
     })
-      .then(res => setAnimeForm({ ...res }))
-      .then(res => setFavoriteAnime(animeForm))
-      .catch(err => console.log(err))
   }
 
   return (
@@ -74,7 +78,7 @@ export default function SingleLineGridList(props) {
       <GridList className={classes.gridList} cols={5}>
         {animeData.map((anime) => (
           <GridListTile className={classes.singleCard} key={anime.mal_id}>
-            <img src={anime.image_url} alt={anime.title} style={{height: '100%', width: '100%'}}/>
+            <img src={anime.image_url} alt={anime.title} style={{ height: '100%', width: '100%' }} />
             <GridListTileBar
               title={<a href={anime.url} target="_blank" rel="noopener noreferrer">{anime.title}</a>}
               classes={{
@@ -88,12 +92,12 @@ export default function SingleLineGridList(props) {
               }
             />
             <GridListTileBar
-            title={anime.synopsis}
-            titlePosition='top'
-            classes={{
-              root: classes.synopsisTileBar,
-              title: classes.hiddenText
-            }}
+              title={anime.synopsis}
+              titlePosition='top'
+              classes={{
+                root: classes.synopsisTileBar,
+                title: classes.hiddenText
+              }}
             />
           </GridListTile>
         ))}
