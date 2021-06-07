@@ -38,7 +38,7 @@ export default function Card() {
             {/*  eslint-disable-next-line */}
             {cardArr.map((card) => {
                 if (card.userID === SessionUserID) return (
-                    <Grid key={card.id} item className="aniGrid">
+                    <Grid key={card._id} item className="aniGrid">
                         <Paper elevation={3} className="aniPaper">
                             <h3 id="title"><a href={card.url} target="_blank" rel="noopener noreferrer">{card.title}</a></h3>
                             <GridListTile className="imageTile">
